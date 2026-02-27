@@ -390,12 +390,23 @@ nav.scrolled {
 
   .mobile-toggle {
     display: block;
+    position: relative;
+    z-index: 1002;
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: flex-end;
+    /* Hamburger to right */
+    align-items: center;
+    width: 100%;
   }
 
   .logo {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1001;
   }
 
   .hero h1 {

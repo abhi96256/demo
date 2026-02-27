@@ -323,38 +323,38 @@ const App = () => {
       {/* Footer / Contact Section */}
       <footer id="contact" style={{ background: 'black', color: 'white', padding: '10rem 0 4rem', borderTop: '1px solid #222' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginBottom: '8rem' }}>
-            <div>
+          <div className="footer-grid-custom">
+            <div className="footer-section">
               <h2 className="logo" style={{ color: 'var(--primary)', fontSize: '2.5rem', marginBottom: '1rem' }}>
                 <span style={{ fontSize: '3.5rem' }}>Δ</span>ERA
               </h2>
               <p style={{ color: '#FFD700', letterSpacing: '2px', fontWeight: 'bold', marginBottom: '2rem' }}>Beauty Salon, Makeup Studio & Academy</p>
-              <div style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem' }}>
+              <div style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem', justifyContent: 'inherit' }}>
                 <Instagram size={24} className="hover-primary" style={{ cursor: 'pointer' }} />
                 <Facebook size={24} className="hover-primary" style={{ cursor: 'pointer' }} />
               </div>
             </div>
 
-            <div>
+            <div className="footer-section">
               <h4 className="font-display" style={{ marginBottom: '2rem', fontSize: '1.5rem', color: 'var(--primary)' }}>VISIT US</h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.5rem', color: '#ccc' }}>
-                <li style={{ display: 'flex', gap: '15px' }}><MapPin size={24} color="var(--primary)" />
+                <li style={{ display: 'flex', gap: '15px', justifyContent: 'inherit' }}><MapPin size={24} color="var(--primary)" />
                   Pream Nagar, Uncha Gaon Road,<br />Near Sisam Ped, Ballabgarh, FBD
                 </li>
-                <li style={{ display: 'flex', gap: '15px' }}><Phone size={20} color="var(--primary)" /> +91 8427733428</li>
-                <li style={{ display: 'flex', gap: '15px' }}><Clock size={20} color="var(--primary)" /> 10:00 AM - 08:00 PM</li>
+                <li style={{ display: 'flex', gap: '15px', justifyContent: 'inherit' }}><Phone size={20} color="var(--primary)" /> +91 8427733428</li>
+                <li style={{ display: 'flex', gap: '15px', justifyContent: 'inherit' }}><Clock size={20} color="var(--primary)" /> 10:00 AM - 08:00 PM</li>
               </ul>
             </div>
 
-            <div>
+            <div className="footer-section">
               <h4 className="font-display" style={{ marginBottom: '2rem', fontSize: '1.5rem', color: 'var(--primary)' }}>GET IN TOUCH</h4>
               <p style={{ color: '#ccc', marginBottom: '1.5rem' }}>For enquiries and admissions:</p>
-              <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <p style={{ fontSize: '1.1rem', marginBottom: '2rem', display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'inherit' }}>
                 <Instagram size={18} color="var(--primary)" /> suman790devi@gmail.com
               </p>
               <button
                 className="btn-lux"
-                style={{ width: '100%', justifyContent: 'center' }}
+                style={{ width: '100%', maxWidth: '400px', justifyContent: 'center', margin: '0 auto' }}
                 onClick={() => window.open('https://wa.me/918427733428', '_blank')}
               >
                 MESSAGE NOW
@@ -362,7 +362,7 @@ const App = () => {
             </div>
           </div>
           <div style={{ textAlign: 'center', borderTop: '1px solid #222', paddingTop: '4rem', color: '#444', fontSize: '0.8rem' }}>
-            <p>&copy; 2024 ΔERA BEAUTY SALON. BY SUMAN DAYAL. ALL RIGHTS RESERVED.</p>
+            <p>&copy; 2026 ΔERA BEAUTY SALON. BY SUMAN DAYAL. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
       </footer>

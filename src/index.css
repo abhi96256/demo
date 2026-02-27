@@ -221,8 +221,9 @@ nav.scrolled {
 .mobile-overlay {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 70%;
+  /* Half-ish screen */
   height: 100vh;
   background: var(--secondary);
   z-index: 999;
@@ -232,6 +233,7 @@ nav.scrolled {
   align-items: center;
   transform: translateX(100%);
   transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+  border-left: 1px solid var(--primary-glow);
 }
 
 .mobile-overlay.open {
@@ -263,31 +265,114 @@ nav.scrolled {
 
 .service-card {
   position: relative;
-  height: 500px;
+  height: 600px;
   overflow: hidden;
   background: var(--secondary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .service-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
-  transition: var(--transition);
+  opacity: 0.7;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
 
 .service-card:hover img {
   transform: scale(1.1);
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .service-info {
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
   padding: 3rem;
   color: white;
   z-index: 2;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+}
+
+/* --- New Sections Styling --- */
+
+/* Testimonials */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4rem;
+  border-left: 2px solid var(--primary);
+  margin-bottom: 2rem;
+}
+
+.testimonial-quote {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  color: #1a1a1a;
+}
+
+/* Pricing Grid */
+.price-card {
+  padding: 4rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.price-card:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-10px);
+}
+
+.price-card h3 {
+  color: var(--primary) !important;
+}
+
+.price-card p {
+  color: #ccc !important;
+}
+
+.price-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+}
+
+.price-card:hover * {
+  color: var(--secondary) !important;
+}
+
+.price-card:hover .price-list li {
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Academy Stats */
+.stat-item {
+  text-align: center;
+  padding: 2rem;
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Playfair Display', serif;
+}
+
+/* --- Responsive Helpers --- */
+@media (max-width: 968px) {
+  .service-card {
+    height: 450px;
+  }
+
+  .price-card {
+    padding: 2rem;
+  }
 }
 
 .service-info h3 {
@@ -297,12 +382,20 @@ nav.scrolled {
 
 /* --- Responsive --- */
 @media (max-width: 968px) {
-  .nav-links {
+
+  .nav-links,
+  .nav-book-btn {
     display: none;
   }
 
   .mobile-toggle {
     display: block;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .hero h1 {

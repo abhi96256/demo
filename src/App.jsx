@@ -35,7 +35,7 @@ const App = () => {
         variants={navVariants}
         className={isScrolled ? 'scrolled' : ''}
       >
-        <div className="container nav-content">
+        <div className="container nav-content" style={{ position: 'relative' }}>
           <a href="#" className="logo" style={{ color: 'var(--primary)', display: 'flex', alignItems: 'baseline', gap: '5px' }}>
             <span style={{ fontSize: '2rem' }}>Δ</span>ERA
           </a>
@@ -49,7 +49,7 @@ const App = () => {
           </ul>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-            <button className="btn-lux" style={{ padding: '0.8rem 2rem', fontSize: '0.7rem' }}>
+            <button className="btn-lux nav-book-btn" style={{ padding: '0.8rem 2rem', fontSize: '0.7rem' }}>
               BOOK SESSION
             </button>
             <button
@@ -90,16 +90,6 @@ const App = () => {
 
       {/* Hero Section */}
       <section id="home" className="hero">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="hero-video-bg"
-          poster="/hero-bg.png"
-        >
-          {/* Fallback image is used via poster if video not found */}
-        </video>
         <div className="hero-overlay" style={{ background: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.9))' }} />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="hero-content">
@@ -133,56 +123,65 @@ const App = () => {
               transition={{ delay: 1.2 }}
               style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginTop: '2rem', flexWrap: 'wrap' }}
             >
-              <button className="btn-lux">OUR COURSES</button>
-              <button className="btn-lux btn-outline">VIEW PORTFOLIO</button>
+              <button className="btn-lux">JOIN ACADEMY</button>
+              <button className="btn-lux btn-outline">VIEW CATALOG</button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Academy & Studio Section (The Improved Section) */}
       <section id="services" style={{ padding: '10rem 0', background: '#050505' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ textAlign: 'center', marginBottom: '6rem' }}
+            style={{ textAlign: 'center', marginBottom: '8rem' }}
           >
-            <p style={{ color: 'var(--primary)', letterSpacing: '5px', marginBottom: '1rem' }}>PREMIUM SERVICES</p>
-            <h2 className="font-display" style={{ fontSize: '3.5rem', color: 'white' }}>Academy & Studio</h2>
+            <p style={{ color: 'var(--primary)', letterSpacing: '5px', marginBottom: '1rem' }}>ELITE SERVICES</p>
+            <h2 className="font-display" style={{ fontSize: '4rem', color: 'white' }}>Academy & Studio</h2>
+            <div style={{ width: '80px', height: '2px', background: 'var(--primary)', margin: '2rem auto' }}></div>
           </motion.div>
 
           <div className="service-grid">
             {[
               {
-                title: 'Professional Makeup',
-                img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071&auto=format&fit=crop',
-                tag: 'STUDIO'
+                title: 'High-End Makeup',
+                img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=1976&auto=format&fit=crop',
+                tag: 'STUDIO',
+                desc: 'Bespoke bridal and editorial makeup for every occasion.'
               },
               {
-                title: 'Makeup Academy',
-                img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=1976&auto=format&fit=crop',
-                tag: 'EDUCATION'
+                title: 'Professional Academy',
+                img: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=2070&auto=format&fit=crop',
+                tag: 'ACADEMY',
+                desc: 'Certified courses for aspiring makeup artists.'
               },
               {
                 title: 'Bridal Transformation',
-                img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc206e?q=80&w=2070&auto=format&fit=crop',
-                tag: 'BRIDAL'
+                img: 'https://images.unsplash.com/photo-1594465919760-441fe5908ab0?q=80&w=1920&auto=format&fit=crop',
+                tag: 'SIGNATURE',
+                desc: 'Luxury bridal packages including hair, draping, and makeup.'
               }
             ].map((service, idx) => (
               <motion.div
                 key={idx}
                 className="service-card"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.2 }}
+                style={{ border: 'none' }}
               >
                 <img src={service.img} alt={service.title} />
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8))' }}></div>
                 <div className="service-info">
-                  <p style={{ color: 'var(--primary)', letterSpacing: '3px', fontSize: '0.7rem', fontWeight: 'bold' }}>{service.tag}</p>
-                  <h3 className="font-display">{service.title}</h3>
-                  <button style={{ background: 'none', border: 'none', color: 'white', fontWeight: '600', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    LEARN MORE <ArrowRight size={16} />
+                  <p style={{ color: 'var(--primary)', letterSpacing: '4px', fontSize: '0.7rem', fontWeight: 'bold', marginBottom: '1rem' }}>{service.tag}</p>
+                  <h3 className="font-display" style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'white' }}>{service.title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '2rem', fontSize: '0.9rem', lineHeight: '1.6' }}>{service.desc}</p>
+                  <button style={{ background: 'none', border: 'none', color: 'var(--primary)', fontWeight: '700', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px', padding: '0', fontSize: '0.8rem', letterSpacing: '2px' }}>
+                    VIEW DETAILS <ArrowRight size={16} />
                   </button>
                 </div>
               </motion.div>
@@ -191,43 +190,135 @@ const App = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" style={{ background: '#f9f9f9' }}>
+      {/* NEW SECTION 1: Academy Excellence (Details/Stats) */}
+      <section id="academy" style={{ background: 'white', color: 'black', padding: '10rem 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', alignItems: 'center' }}>
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div style={{ position: 'relative' }}>
-                <img
-                  src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=1976&auto=format&fit=crop"
-                  alt="Founder"
-                  style={{ width: '100%', height: '600px', objectFit: 'cover' }}
-                />
-                <div style={{ position: 'absolute', bottom: '-30px', right: '-30px', background: 'var(--primary)', padding: '2rem', color: 'white', display: 'none', lg: 'block' }}>
-                  <p style={{ fontSize: '2rem', fontWeight: '700' }}>15+</p>
-                  <p style={{ fontSize: '0.7rem', letterSpacing: '1px' }}>YEARS OF EXCELLENCE</p>
-                </div>
-              </div>
-            </motion.div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '4rem' }}>
+            <div className="stat-item">
+              <p className="stat-number">500+</p>
+              <p style={{ letterSpacing: '3px', fontSize: '0.8rem', fontWeight: '600' }}>STUDENTS GRADUATED</p>
+            </div>
+            <div className="stat-item">
+              <p className="stat-number">15+</p>
+              <p style={{ letterSpacing: '3px', fontSize: '0.8rem', fontWeight: '600' }}>YEARS OF ARTISTRY</p>
+            </div>
+            <div className="stat-item">
+              <p className="stat-number">50+</p>
+              <p style={{ letterSpacing: '3px', fontSize: '0.8rem', fontWeight: '600' }}>AWARDS WON</p>
+            </div>
+          </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <p style={{ color: 'var(--primary)', letterSpacing: '4px', marginBottom: '1rem' }}>OUR PHILOSOPHY</p>
-              <h2 style={{ fontSize: '3rem', marginBottom: '2rem' }}>We don't just change looks, we inspire confidence.</h2>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '1.1rem' }}>
-                Glow & Grace was founded on the principle that luxury should be felt, not just seen. Every touch, every scent, and every cut is designed to elevate your spirit.
-              </p>
-              <button className="btn-lux">MEET THE TEAM</button>
+          <div style={{ marginTop: '8rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', alignItems: 'center' }}>
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <h2 className="font-display" style={{ fontSize: '4rem', lineHeight: '1', marginBottom: '2rem' }}>Learn from the best in the industry.</h2>
+              <p style={{ color: '#555', fontSize: '1.2rem', marginBottom: '2rem' }}>Our academy provides hands-on training using international products and techniques. From basic to advanced pro levels.</p>
+              <ul style={{ listStyle: 'none', marginBottom: '3rem' }}>
+                {['Basic to Pro Makeup', 'Advanced Hair Styling', 'Skin & Aesthetics', 'Bridal Specialty'].map(item => (
+                  <li key={item} style={{ padding: '0.8rem 0', display: 'flex', alignItems: 'center', gap: '15px', borderBottom: '1px solid #eee' }}>
+                    <div style={{ width: '8px', height: '8px', background: 'var(--primary)', borderRadius: '50%' }}></div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <button className="btn-lux" style={{ background: 'black', color: 'white' }}>DOWNLOAD BROCHURE</button>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2069&auto=format&fit=crop" style={{ width: '100%', borderRadius: '20px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }} alt="Training" />
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* NEW SECTION 2: Pricing Menu (Luxury List) */}
+      <section id="pricing" style={{ background: '#0a0a0a', padding: '10rem 0' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+            <p style={{ color: 'var(--primary)', letterSpacing: '5px' }}>ELITE MENU</p>
+            <h2 className="font-display" style={{ fontSize: '3.5rem' }}>Service Pricing</h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem' }}>
+            {/* Bridal Package */}
+            <div className="price-card">
+              <h3 className="font-display" style={{ fontSize: '2rem', color: 'var(--primary)', marginBottom: '1rem' }}>Bridal Elite</h3>
+              <p style={{ color: '#666', fontSize: '0.9rem' }}>The complete transformation for your wedding day.</p>
+              <ul className="price-list">
+                <li><span>HD/Airbrush Makeup</span> <span>₹ 15,000+</span></li>
+                <li><span>International Hair Styling</span> <span>Included</span></li>
+                <li><span>Draping & Accessories</span> <span>Included</span></li>
+                <li><span>Pre-Bridal Glow Up</span> <span>Optional</span></li>
+              </ul>
+              <button className="btn-lux" style={{ width: '100%', background: 'white', color: 'black' }}>BOOK PACKAGE</button>
+            </div>
+
+            {/* Party & Occasion */}
+            <div className="price-card">
+              <h3 className="font-display" style={{ fontSize: '2rem', color: 'var(--primary)', marginBottom: '1rem' }}>Studio Glam</h3>
+              <p style={{ color: '#666', fontSize: '0.9rem' }}>Perfect for parties, events, and photoshoots.</p>
+              <ul className="price-list">
+                <li><span>Party Makeup</span> <span>₹ 3,500</span></li>
+                <li><span>Engagement Makeup</span> <span>₹ 7,500</span></li>
+                <li><span>Editorial/High-Fashion</span> <span>₹ 5,000</span></li>
+                <li><span>Quick Styling session</span> <span>₹ 1,500</span></li>
+              </ul>
+              <button className="btn-lux" style={{ width: '100%', background: 'white', color: 'black' }}>BOOK GLAM</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION 3: Testimonials (Client Stories) */}
+      <section id="testimonials" style={{ background: 'white', color: 'black', padding: '10rem 0' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', alignItems: 'center' }}>
+            <div>
+              <p style={{ color: 'var(--primary)', letterSpacing: '3px' }}>TESTIMONIALS</p>
+              <h2 className="font-display" style={{ fontSize: '4rem', marginBottom: '2rem' }}>What our clients say.</h2>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ padding: '1rem', border: '1px solid #ddd', borderRadius: '50%', cursor: 'pointer' }}><ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} /></div>
+                <div style={{ padding: '1rem', border: '1px solid #ddd', borderRadius: '50%', cursor: 'pointer' }}><ArrowRight size={20} /></div>
+              </div>
+            </div>
+            <div>
+              <div className="testimonial-card">
+                <p className="testimonial-quote">"Suman Dayal is a true magician. My bridal makeup was exactly what I dreamed of—elegant, glowing, and timeless. The academy students are also so professional!"</p>
+                <div>
+                  <p style={{ fontWeight: '700', fontSize: '1.2rem' }}>Priya Sharma</p>
+                  <p style={{ color: 'var(--primary)', fontSize: '0.8rem', letterSpacing: '2px' }}>HAPPY BRIDE</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/918427733428"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        style={{
+          position: 'fixed',
+          bottom: '30px',
+          right: '30px',
+          background: '#25D366',
+          color: 'white',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 10px 25px rgba(37, 211, 102, 0.4)',
+          zIndex: 9999,
+          textDecoration: 'none'
+        }}
+      >
+        <Phone size={30} fill="white" />
+      </motion.a>
 
       {/* Footer / Contact Section */}
       <footer id="contact" style={{ background: 'black', color: 'white', padding: '10rem 0 4rem', borderTop: '1px solid #222' }}>
@@ -258,8 +349,16 @@ const App = () => {
             <div>
               <h4 className="font-display" style={{ marginBottom: '2rem', fontSize: '1.5rem', color: 'var(--primary)' }}>GET IN TOUCH</h4>
               <p style={{ color: '#ccc', marginBottom: '1.5rem' }}>For enquiries and admissions:</p>
-              <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', display: 'flex', gap: '10px' }}><X size={18} /> suman790devi@gmail.com</p>
-              <button className="btn-lux" style={{ width: '100%', justifyContent: 'center' }}>MESSAGE NOW</button>
+              <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <Instagram size={18} color="var(--primary)" /> suman790devi@gmail.com
+              </p>
+              <button
+                className="btn-lux"
+                style={{ width: '100%', justifyContent: 'center' }}
+                onClick={() => window.open('https://wa.me/918427733428', '_blank')}
+              >
+                MESSAGE NOW
+              </button>
             </div>
           </div>
           <div style={{ textAlign: 'center', borderTop: '1px solid #222', paddingTop: '4rem', color: '#444', fontSize: '0.8rem' }}>
